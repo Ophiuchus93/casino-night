@@ -1,5 +1,7 @@
+require "colorize"
+require "pry"
 require_relative "spin"
-# wheel = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19,20, 21, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36]
+
 
 class Roulette
   def initialize
@@ -8,6 +10,19 @@ class Roulette
   end
 
   def menu
+    
+    puts `clear`
+    
+    puts "-----------    --------   ----    ---- ----         ------------ ------------ ------------ ------------ ".colorize(:light_magenta)
+    puts "***********   **********  ****    **** ****         ************ ************ ************ ************ ".colorize(:magenta)
+    puts "----    ---  ----    ---- ----    ---- ----         ----         ------------ ------------ ----         ".colorize(:light_blue)
+    puts "*********    ***      *** ****    **** ****         ************     ****         ****     ************ ".colorize(:blue)
+    puts "---------    ---      --- ----    ---- ----         ------------     ----         ----     ------------ ".colorize(:light_cyan)
+    puts "****  ****   ****    **** ************ ************ ****             ****         ****     ****         ".colorize(:cyan)
+    puts "----   ----   ----------  ------------ ------------ ------------     ----         ----     ------------ ".colorize(:light_green)
+    puts "****    ****   ********   ************ ************ ************     ****         ****     ************ ".colorize(:green)
+
+
     puts "--- Welcome to Roulette ---"
     puts "1) Take a spin"
     puts "2) Leave"
@@ -17,11 +32,11 @@ class Roulette
       when 1 
         Spin.new
       when 2
-        exit
+        exit #Main Menu
       when 777
         Cheat.new
       else
-        "Please pick one of the shown options"
+        puts "Please pick one of the shown options"
         sleep(2)
         `clear`
         menu
