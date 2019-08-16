@@ -5,7 +5,9 @@ require "sounder"
 
 
 class User
-  def initialize(age, wallet)
+  attr_accessor :name, :age, :wallet
+  def initialize(name, age, wallet)
+    @name = name
     @wallet = wallet
     @age = age
   end
