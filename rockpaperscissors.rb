@@ -1,7 +1,8 @@
 require "pry"
 require "colorize"
 require "colorized_string"
-# require_relative "user"
+require_relative "user"
+# require_relative "casino_night"
 
 class Rock_Paper_Scissors 
   def initialize()
@@ -28,6 +29,7 @@ class Rock_Paper_Scissors
         puts "Place your Bet"
         print ">$"
         @user_bet = gets.to_i 
+        # @user_bet << @wallet
         sleep (1)
         puts "Get ready to throw!"
         puts " Throw in 3.."
@@ -43,30 +45,52 @@ class Rock_Paper_Scissors
         puts pc_throw
         if @user_throw.downcase == "rock" && pc_throw == "rock"
           puts " It's a tie!"
+          sleep(1)
           rpsgame
         elsif @user_throw.downcase == "rock" && pc_throw == "scissors"
           puts "You lose!"
+          sleep(1)
+          rpsgame
+          # lose method
         elsif @user_throw.downcase == "rock" && pc_throw == "paper"
           puts "You win!" 
+          sleep(1)
+          rpsgame
         elsif @user_throw.downcase == "scissors" && pc_throw == "scissors"
           puts "It's a tie!"
+          sleep(1)
           rpsgame
-        elsif @user_throw.downcase = scissors && pc_throw = rock   
+        elsif @user_throw.downcase == "scissors" && pc_throw == "rock"   
           puts "You lose!"
+          sleep(1)
+          rpsgame
         elsif @user_throw.downcase == "scissors" && pc_throw == "paper"
           puts "You win!"
+          sleep(1)
+          rpsgame
         elsif @user_throw.downcase == "paper" && pc_throw == "paper"    
           puts "It's a tie!"
+          sleep(1)
           rpsgame
-        elsif @user_throw.downcase = paper && pc_throw = scissors
+        elsif @user_throw.downcase == "paper" && pc_throw == "scissors"
           puts "You lose!"
-        elsif @user_throw.downcase = paper && pc_throw = rock  
-          puts "You win!"         
-        
-        end  
+          sleep(1)
+          rpsgame
+        elsif @user_throw.downcase == "paper" && pc_throw == "rock"  
+          puts "You win!"
+          sleep(1)     
+          rpsgame    
+         end  
         else  
         puts "You Lost"
         exit
+
+        # def win
+        # end
+        # def tie
+        # end
+        # def lose
+        # end
     
     end
   end
