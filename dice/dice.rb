@@ -27,9 +27,6 @@ class Dice
         sleep(2)
         print `clear`
         dice_menu
-
-      elsif guess == e
-        puts "Thank you for playin".colorize(:green)
         
       
 
@@ -46,11 +43,7 @@ class Dice
        
     end
 
-  def e
-    puts "Thank you for playin".colorize(:green)
-    print `clear`
-    exit
-  end
+  
 
   def roll
     @die1 = 1 + rand(6)
