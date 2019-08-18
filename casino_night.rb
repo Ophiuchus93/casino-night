@@ -16,11 +16,10 @@ require_relative "spin"
 require_relative "dice"
 
 class Menu
-  attr_accessor 
-  def initialize()
-    @name
+  def initialize(name, wallet)
+    @name = name
     @age
-    @wallet
+    @wallet = wallet
     main_menu()
   end
   def init_user()
@@ -57,7 +56,7 @@ class Menu
     when main_select = 1
       Roulette.new
     when main_select = 2
-      Rock_Paper_Scissors.new()
+      Rock_Paper_Scissors.new(@name, @wallet)
     when main_select = 3
       Dice.new
     when main_select = 4
@@ -85,4 +84,4 @@ end
 
 
 
-Menu.new
+Menu.new("Bryan", 0)

@@ -8,6 +8,7 @@ require_relative "roulette"
 require_relative "spin"
 require_relative "dice"
 
+
 class Dice
   def initialize()  
     dice_menu()
