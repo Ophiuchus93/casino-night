@@ -1,6 +1,12 @@
-require "colorize"
 require "pry"
+require "colorize"
+require "colorized_string"
+require "sounder"
+require_relative "user"
+require_relative "rockpaperscissors"
+require_relative "roulette"
 require_relative "spin"
+require_relative "dice"
 
 
 class Roulette
@@ -45,4 +51,4 @@ class Roulette
 end 
 
 
-Roulette.new
+# Roulette.new

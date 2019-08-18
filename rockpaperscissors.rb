@@ -1,8 +1,14 @@
 require "pry"
 require "colorize"
 require "colorized_string"
+require "sounder"
 require_relative "user"
-# require_relative "casino_night"
+require_relative "rockpaperscissors"
+require_relative "roulette"
+require_relative "spin"
+require_relative "dice"
+
+
 
 class Rock_Paper_Scissors 
   def initialize()
@@ -11,25 +17,24 @@ class Rock_Paper_Scissors
       "paper",
       "scissors"
     ]
-
     @user_throw 
     @user_bet 
-    menu
+    menu()
   end
   def menu()
     puts "---Welcome to Stones-Mashed Trees-Twin Blades---"
+    puts "You have $#{@wallet}"
     puts "1) Get Ready To Show Down"
     puts "2) Run Away to the Main Menu"
     print ">"
     @rpschoice = gets.to_i
-    rpsgame
+    rpsgame()
   end  
     def rpsgame()
       if @rpschoice == 1
         puts "Place your Bet"
         print ">$"
         @user_bet = gets.to_i 
-        # @user_bet << @wallet
         sleep (1)
         puts "Get ready to throw!"
         puts " Throw in 3.."
@@ -46,44 +51,56 @@ class Rock_Paper_Scissors
         if @user_throw.downcase == "rock" && pc_throw == "rock"
           puts " It's a tie!"
           sleep(1)
-          rpsgame
+          menu()
         elsif @user_throw.downcase == "rock" && pc_throw == "scissors"
           puts "You lose!"
           sleep(1)
-          rpsgame
+          money_difference = @wallet.to_i - @user_bet.to_i
+          @wallet = money_difference
+          menu()
           # lose method
         elsif @user_throw.downcase == "rock" && pc_throw == "paper"
           puts "You win!" 
           sleep(1)
-          rpsgame
+          money_difference = @wallet.to_i + @user_bet.to_i
+          @wallet = money_difference
+          menu()
         elsif @user_throw.downcase == "scissors" && pc_throw == "scissors"
           puts "It's a tie!"
           sleep(1)
-          rpsgame
+          menu()
         elsif @user_throw.downcase == "scissors" && pc_throw == "rock"   
           puts "You lose!"
           sleep(1)
-          rpsgame
+          money_difference = @wallet.to_i - @user_bet.to_i
+          @wallet = money_difference
+          menu()
         elsif @user_throw.downcase == "scissors" && pc_throw == "paper"
           puts "You win!"
           sleep(1)
-          rpsgame
+          money_difference = @wallet.to_i + @user_bet.to_i
+          @wallet = money_difference
+          menu()
         elsif @user_throw.downcase == "paper" && pc_throw == "paper"    
           puts "It's a tie!"
           sleep(1)
-          rpsgame
+          menu()
         elsif @user_throw.downcase == "paper" && pc_throw == "scissors"
           puts "You lose!"
           sleep(1)
-          rpsgame
+          money_difference = @wallet.to_i - @user_bet.to_i
+          @wallet = money_difference
+          menu()
         elsif @user_throw.downcase == "paper" && pc_throw == "rock"  
           puts "You win!"
-          sleep(1)     
-          rpsgame    
+          sleep(1) 
+          money_difference = @wallet.to_i + @user_bet.to_i
+          @wallet = money_difference    
+          menu()    
          end  
         else  
-        puts "You Lost"
-        exit
+        puts "Please come again!"
+        Menu.new
 
         # def win
         # end
@@ -95,7 +112,7 @@ class Rock_Paper_Scissors
     end
   end
 end
-Rock_Paper_Scissors.new
+# Rock_Paper_Scissors.new
 
 
 

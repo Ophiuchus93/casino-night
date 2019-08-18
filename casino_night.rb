@@ -10,30 +10,41 @@ require "colorize"
 require "colorized_string"
 require "sounder"
 require_relative "user"
-
+require_relative "rockpaperscissors"
+require_relative "roulette"
+require_relative "spin"
+require_relative "dice"
 
 class Menu
   attr_accessor 
   def initialize()
-    @name = 
-    @age =
-    @wallet = 
-    welcome()
+    @name
+    @age
+    @wallet
+    main_menu()
   end
-  def welcome()
-    puts "Welcome to our Casino! What is your name?"
+  def main_menu()
+    puts ".o0o. CASINO .o0o."
+    puts "What game would you like to play?"
+    puts "1) Roulette"
+    puts "2) Rock-Paper-Scissors"
+    puts "3) Dice"
+    puts "4) Exit"
     print "> "
-    @name = gets.strip
-    puts "Hello #{@name}, how old are you?"
-    print "> "
-    @age = gets.to_i
-    if @age < 21 
-      puts "I'm sorry, but you must be at least 21 to participate"
+    main_select = gets.to_i
+    case main_select
+    when main_select = 1
+      Roulette.new
+    when main_select = 2
+      Rock_Paper_Scissors.new
+    when main_select = 3
+      Dice.new
+    when main_select = 4
+      puts "Thanks for playing!"
       exit
-    else 
-      puts "Wonderful! How much did you bring to bet tonight?"
-      print ">$"
-      @wallet = gets.to_i
+    else
+      puts "That is not an option. Please try again."
+      main_menu()
     end
   end
 
@@ -48,4 +59,4 @@ end
 
 
 
-Menu.new
+User.new(name: "bryan", age: 21, wallet: 500)
