@@ -1,19 +1,55 @@
-require "pry"
-
-class NumberSpin
+class ColorSpin
   def initialize
-    spin_wheel
+    @color_selection = [
+      "black",
+      "black", 
+      "black", 
+      "black", 
+      "black", 
+      "black", 
+      "black", 
+      "black", 
+      "black", 
+      "black", 
+      "black", 
+      "black", 
+      "black", 
+      "black", 
+      "black", 
+      "black", 
+      "black", 
+      "black", 
+      "red", 
+      "red", 
+      "red", 
+      "red", 
+      "red", 
+      "red", 
+      "red", 
+      "red", 
+      "red", 
+      "red", 
+      "red", 
+      "red", 
+      "red", 
+      "red", 
+      "red", 
+      "red", 
+      "red", 
+      "red", 
+      "green"
+  ]
+  pick_color
   end
-  
-  def spin_wheel
-    puts "Pick a number between 0-36"
-    pick = gets.to_i
 
-    spin = rand(0..36)
-    if pick == spin
-      puts "You Win"
+  def pick_color
+    puts "Pick a color to bet on: Black, Red, or Green"
+    print "> "
+    answer = gets.strip.downcase
+    if answer == @color_selection.sample 
+      puts "You win" 
     else
-      puts "You lose D:"
+      puts "You lose"
       sleep(2)
       puts "Would you like to play again?"
       puts "1) Yes"
@@ -32,7 +68,7 @@ class NumberSpin
         puts "----   ----   ----------  ------------ ------------ ------------     ----         ----     ------------ ".colorize(:light_green)
         puts "****    ****   ********   ************ ************ ************     ****         ****     ************ ".colorize(:green)
 
-        NumberSpin.new
+        ColorSpin.new
       when 2
         exit #Main Menu
       end
@@ -40,3 +76,4 @@ class NumberSpin
   end
 end
 
+# ColorSpin.new

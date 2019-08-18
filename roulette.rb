@@ -7,15 +7,18 @@ require_relative "rockpaperscissors"
 require_relative "roulette"
 require_relative "spin"
 require_relative "dice"
+require_relative "roulette_color_spin"
+
+
 
 
 class Roulette
   def initialize
     # @wheel = wheel
-    menu
+    roulette_menu
   end
 
-  def menu
+  def roulette_menu
     
     puts `clear`
     
@@ -30,17 +33,19 @@ class Roulette
 
 
     puts "--- Welcome to Roulette ---"
-    puts "1) Take a spin"
+    puts "1) Take a spin and guess the number"
+    puts "2) Take a spin and guess the color"
     puts "2) Leave"
     print "> "
     choice = gets.to_i
     case choice
       when 1 
-        Spin.new
+        NumberSpin.new
       when 2
-        exit #Main Menu
-      when 777
-        Cheat.new
+        ColorSpin.new
+      when 3
+        puts `clear`
+        Menu.new
       else
         puts "Please pick one of the shown options"
         sleep(2)
@@ -48,7 +53,7 @@ class Roulette
         menu
       end
   end
-end 
+end
 
 
-# Roulette.new
+Roulette.new
