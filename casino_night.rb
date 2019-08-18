@@ -23,23 +23,50 @@ class Menu
     @wallet
     main_menu()
   end
+  def init_user()
+    puts "Welcome to our Casino! What is your name?"
+    print "> "
+    @name = gets.strip
+    puts "Hello #{@name}, how old are you?"
+    print "> "
+    @age = gets.to_i
+    if @age < 21 
+      puts "I'm sorry, but you must be at least 21 to participate"
+      exit
+    else 
+      puts "Wonderful! How much did you bring to bet tonight?"
+      print ">$"
+      @wallet = gets.to_i
+    end
+    Wallet.new(@name, @age, @wallet)
+    main_menu()
+
+  end
   def main_menu()
     puts ".o0o. CASINO .o0o."
-    puts "What game would you like to play?"
+    puts "What would you like to do?"
     puts "1) Roulette"
     puts "2) Rock-Paper-Scissors"
     puts "3) Dice"
-    puts "4) Exit"
+    puts "4) Create new user"
+    puts "5) Check available funds"
+    puts "6) Exit"
     print "> "
     main_select = gets.to_i
     case main_select
     when main_select = 1
       Roulette.new
     when main_select = 2
-      Rock_Paper_Scissors.new
+      Rock_Paper_Scissors.new()
     when main_select = 3
       Dice.new
     when main_select = 4
+      init_user()
+    when main_select = 5
+      puts "You have $#{@wallet} available."
+      sleep(3)
+      main_menu()
+    when main_select = 6
       puts "Thanks for playing!"
       exit
     else
@@ -58,5 +85,4 @@ end
 
 
 
-
-User.new(name: "bryan", age: 21, wallet: 500)
+Menu.new

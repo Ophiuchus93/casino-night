@@ -9,35 +9,39 @@ require_relative "spin"
 require_relative "dice"
 
 
+
+
 class User
-  attr_accessor :name, :age, :wallet
-  def initialize(name: , age: , wallet: )
+  attr_accessor :name, :age
+  def initialize(name, age)
+  @name = name
+  @age = age
+  end
+end
+
+class Wallet 
+  attr_accessor :wallet
+  def initialize(name, age, wallet)
     @name = name
     @age = age
     @wallet = wallet
-    puts "Welcome to our Casino! What is your name?"
-    print "> "
-    @name = gets.strip
-    puts "Hello #{@name}, how old are you?"
-    print "> "
-    @age = gets.to_i
-    if @age < 21 
-      puts "I'm sorry, but you must be at least 21 to participate"
-      exit
-    else 
-      puts "Wonderful! How much did you bring to bet tonight?"
-      print ">$"
-      @wallet = gets.to_i
-    end
-    Menu.new
   end
-
-end
-
-
-class Wallet
-  def initialize()
-    @wallet 
+  def self.plus(number)
+    temp_num = @wallet
+    number + temp_num = @wallet
+  end
+  def self.minus(number)
+    temp_num = @wallet
+    number + temp_num = @wallet
+  end
+  def self.print_money()
+    print @wallet
+  end
+  def self.puts_money()
+    puts @wallet
+  end
+  def self.wallet
+    @wallet
   end
 end
-Wallet.new
+
