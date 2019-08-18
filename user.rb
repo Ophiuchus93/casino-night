@@ -26,20 +26,6 @@ class Wallet
     @age = age
     @wallet = wallet
   end
-  def self.plus(number)
-    temp_num = @wallet
-    number + temp_num = @wallet
-  end
-  def self.minus(number)
-    temp_num = @wallet
-    number + temp_num = @wallet
-  end
-  def self.print_money()
-    print @wallet
-  end
-  def self.puts_money()
-    puts @wallet
-  end
   def self.wallet
     @wallet
   end
