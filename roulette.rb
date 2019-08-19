@@ -249,7 +249,7 @@ puts "****    ****   ********   ************ ************ ************     **** 
     choice = gets.to_i
     case choice
       when 1 
-        NumberSpin.new
+        NumberSpin.new(@name, @wallet)
       when 2
         ColorSpin.new(@name, @wallet)
       when 3
