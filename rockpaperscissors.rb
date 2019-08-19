@@ -118,7 +118,7 @@ class Rock_Paper_Scissors
     end
   end
 end
-Rock_Paper_Scissors.new
+# Rock_Paper_Scissors.new
 
 
 

@@ -1,7 +1,9 @@
 require "pry"
 
 class NumberSpin
-  def initialize
+  def initialize(name, wallet)
+    @name = name
+    @wallet = wallet
     spin_wheel
   end
   
@@ -15,8 +17,8 @@ class NumberSpin
     spin = rand(0..36)
     if pick == spin
       puts "You Win"
-      money_difference = @wallet.to_i + @user_bet.to_i
-      @wallet = money_difference
+      @temp_difference = @wallet + @user_bet
+      @wallet = @temp_difference
       sleep(2)
       puts "Would you like to play again?"
       puts "1) Yes"
@@ -36,14 +38,14 @@ class NumberSpin
         puts "----   ----   ----------  ------------ ------------ ------------     ----         ----     ------------ ".colorize(:light_green)
         puts "****    ****   ********   ************ ************ ************     ****         ****     ************ ".colorize(:green)
 
-        NumberSpin.new
+        spin_wheel()
       when 2
-        Roulette.new
+        Roulette.new(@name, @wallet)
       end
     else
       puts "You lose D:"
-      money_difference = @wallet.to_i - @user_bet.to_i
-      @wallet = money_difference
+      @temp_difference = @wallet - @user_bet
+      @wallet = @temp_difference
       sleep(2)
       puts "Would you like to play again?"
       puts "1) Yes"
@@ -63,9 +65,9 @@ class NumberSpin
         puts "----   ----   ----------  ------------ ------------ ------------     ----         ----     ------------ ".colorize(:light_green)
         puts "****    ****   ********   ************ ************ ************     ****         ****     ************ ".colorize(:green)
 
-        NumberSpin.new
+        spin_wheel()
       when 2
-        Roulete.new
+        Roulette.new(@name, @wallet)
       end
     end
   end

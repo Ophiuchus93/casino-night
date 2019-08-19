@@ -39,10 +39,16 @@ class Menu
     end
     Wallet.new(@name, @age, @wallet)
     main_menu()
-
   end
   def main_menu()
-    puts ".o0o. CASINO .o0o."
+    puts " ▄████████    ▄████████    ▄████████  ▄█   ███▄▄▄▄    ▄██████▄  ".colorize(:color => :magenta, :background => :black)  
+    puts " ███    ███   ███    ███   ███    ███ ███  ███▀▀▀██▄ ███    ███ ".colorize(:color => :red, :background => :black)
+    puts " ███    █▀    ███    ███   ███    █▀  ███▌ ███   ███ ███    ███ ".colorize(:color => :orange, :background => :black)
+    puts " ███          ███    ███   ███        ███▌ ███   ███ ███    ███ ".colorize(:color => :yellow, :background => :black) 
+    puts " ███        ▀███████████ ▀███████████ ███▌ ███   ███ ███    ███ ".colorize(:color => :green, :background => :black)
+    puts " ███    █▄    ███    ███          ███ ███  ███   ███ ███    ███ ".colorize(:color => :cyan, :background => :black)
+    puts " ███    ███   ███    ███    ▄█    ███ ███  ███   ███ ███    ███ ".colorize(:color => :blue, :background => :black)
+    puts " ████████▀    ███    █▀   ▄████████▀  █▀    ▀█   █▀   ▀██████▀  ".colorize(:color => :white, :background => :black)                                                               
     puts "What would you like to do?"
     puts "1) Roulette"
     puts "2) Rock-Paper-Scissors"
@@ -54,11 +60,11 @@ class Menu
     main_select = gets.to_i
     case main_select
     when main_select = 1
-      Roulette.new
+      Roulette.new(@name, @wallet)
     when main_select = 2
       Rock_Paper_Scissors.new(@name, @wallet)
     when main_select = 3
-      Dice.new
+      Dice.new(@name, @wallet)
     when main_select = 4
       init_user()
     when main_select = 5
@@ -84,4 +90,4 @@ end
 
 
 
-Menu.new("Bryan", 0)
+Menu.new("Hobo", 0)

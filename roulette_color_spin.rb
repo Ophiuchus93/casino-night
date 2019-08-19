@@ -1,5 +1,7 @@
 class ColorSpin
-  def initialize
+  def initialize(name, wallet)
+    @name = name
+    @wallet = wallet
     @color_selection = [
       "black",
       "black", 
@@ -51,8 +53,8 @@ class ColorSpin
     answer = gets.strip.downcase
     if answer == @color_selection.sample 
       puts "You win" 
-      money_difference = @wallet.to_i + @user_bet.to_i
-      @wallet = money_difference
+      @temp_difference = @wallet + @user_bet
+      @wallet = @temp_difference 
       sleep(2)
       puts "Would you like to play again?"
       puts "1) Yes"
@@ -72,14 +74,14 @@ class ColorSpin
         puts "----   ----   ----------  ------------ ------------ ------------     ----         ----     ------------ ".colorize(:light_green)
         puts "****    ****   ********   ************ ************ ************     ****         ****     ************ ".colorize(:green)
 
-        ColorSpin.new
+        pick_color()
       when 2
-        Roulette.new
+        Roulette.new(@name, @wallet)
       end
     else
       puts "You lose"
-      money_difference = @wallet.to_i + @user_bet.to_i
-      @wallet = money_difference
+      @temp_difference = @wallet - @user_bet
+      @wallet = @temp_difference
       sleep(2)
       puts "Would you like to play again?"
       puts "1) Yes"
@@ -99,9 +101,9 @@ class ColorSpin
         puts "----   ----   ----------  ------------ ------------ ------------     ----         ----     ------------ ".colorize(:light_green)
         puts "****    ****   ********   ************ ************ ************     ****         ****     ************ ".colorize(:green)
 
-        ColorSpin.new
+        pick_color()
       when 2
-        Roulette.new
+        Roulette.new(@name, @wallet)
       end
     end
   end

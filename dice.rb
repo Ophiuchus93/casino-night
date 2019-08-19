@@ -10,21 +10,32 @@ require_relative "dice"
 
 
 class Dice
-  def initialize()  
+  def initialize(name, wallet)  
+    @user_bet = 5
+    @name = name
+    @wallet = wallet
     dice_menu()
   end
   def dice_menu
       puts " --- Welcome ---".colorize(:green)
       sleep(1)
-      puts "- Take Your Guess -".colorize(:green)
-      puts " -- e to exit --".colorize(:red)
+      puts "Player cash: $#{@wallet} Current bet amount: $#{@user_bet}".colorize(:blue)
+      puts "1. - Take Your Guess -".colorize(:green)
+      puts "2. - Set bet amount -".colorize(:green)
+      puts "3. -- exit --".colorize(:red)
+      puts "> "
+      choice = gets.to_i
       roll
+      case choice
+      when choice = 1
       guess = gets.to_i
       show_dice()
       show_sum()
       if guess == @rr
         puts "$$ WINNER $$".colorize(:yellow)
         sleep(2)
+        @temp_difference = @wallet + @user_bet
+        @wallet = @temp_difference 
         print `clear`
         dice_menu()
       else
@@ -32,9 +43,17 @@ class Dice
         puts "Try Again".colorize(:red)
         puts ""
         puts ""
+        @temp_difference = @wallet - @user_bet
+        @wallet = @temp_difference
         dice_menu()
       end
+    when choice = 2
+      @user_bet = gets.to_i
+      dice_menu()
+    when choice = 3
+      Menu.new(@name, @wallet)
     end
+  end
   def roll
     @die1 = 1 + rand(6)
     @die2 = 1 + rand(6) 

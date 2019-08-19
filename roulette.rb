@@ -13,8 +13,11 @@ require_relative "roulette_color_spin"
 
 
 class Roulette
-  def initialize
+  def initialize(name, wallet)
     # @wheel = wheel
+    @name = name
+    @wallet = wallet
+    @user_bet = 5
     roulette_menu
   end
 
@@ -238,6 +241,7 @@ puts "****    ****   ********   ************ ************ ************     **** 
 
 
     puts "--- Welcome to Roulette ---"
+    puts "Player cash: $#{@wallet} Current bet amount: $#{@user_bet}"
     puts "1) Take a spin and guess the number"
     puts "2) Take a spin and guess the color"
     puts "3) Leave"
@@ -247,10 +251,10 @@ puts "****    ****   ********   ************ ************ ************     **** 
       when 1 
         NumberSpin.new
       when 2
-        ColorSpin.new
+        ColorSpin.new(@name, @wallet)
       when 3
         puts `clear`
-        Menu.new
+        Menu.new(@name, @wallet)
       else
         puts "Please pick one of the shown options"
         sleep(2)
